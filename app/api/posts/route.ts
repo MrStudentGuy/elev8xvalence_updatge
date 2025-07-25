@@ -1,16 +1,9 @@
 export async function GET() {
-  try {
-    const posts = await db.post.findMany({
-      select: {
-        id: true,
-        title: true,
-        published: true,
-        createdAt: true,
-      },
-    })
+  // Static posts data
+  const posts = [
+    { id: 1, title: "First Post", published: true, createdAt: "2025-07-13" },
+    { id: 2, title: "Second Post", published: true, createdAt: "2025-07-20" },
+  ];
 
-    return new Response(JSON.stringify(posts))
-  } catch (error) {
-    return new Response(null, { status: 500 })
-  }
+  return new Response(JSON.stringify(posts));
 }
